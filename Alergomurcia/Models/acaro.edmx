@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbAlergomurciaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="reuniones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="smalldatetime" />
+          <Property Name="titulo" Type="nvarchar(max)" />
+          <Property Name="lugar" Type="nvarchar(max)" />
+          <Property Name="resumen" Type="nvarchar(max)" />
+          <Property Name="detalle" Type="nvarchar(max)" />
+          <Property Name="enlaces" Type="nvarchar(max)" />
+          <Property Name="documento" Type="image" />
+        </EntityType>
+        <EntityType Name="seccionespdf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="seccion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUploadedFiledetails">
+          <Key>
+            <PropertyRef Name="fileID" />
+          </Key>
+          <Property Name="fileID" Type="int" Nullable="false" />
+          <Property Name="filenameName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="filePath" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Createdby" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedDt" Type="smalldatetime" />
+          <Property Name="Updatedby" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedDt" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="seccion" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="category" Type="char" MaxLength="10" />
+          <Property Name="idCategory" Type="char" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbAlergomurcia.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="100" />
+          <Property Name="usuario" Type="nvarchar(max)" />
+          <Property Name="password" Type="nchar" MaxLength="10" />
+          <Property Name="login" Type="smalldatetime" />
+          <Property Name="articulos_insertar" Type="bit" />
+          <Property Name="articulos_editar" Type="bit" />
+          <Property Name="articulos_eliminar" Type="bit" />
+          <Property Name="reuniones_insertar" Type="bit" />
+          <Property Name="reuniones_editar" Type="bit" />
+          <Property Name="reuniones_eliminar" Type="bit" />
+          <Property Name="noticias_insertar" Type="bit" />
+          <Property Name="noticias_editar" Type="bit" />
+          <Property Name="noticias_eliminar" Type="bit" />
+          <Property Name="usuarios_activar" Type="bit" />
+          <Property Name="usuarios_permisos" Type="bit" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="subir_ficheros" Type="bit" />
+          <Property Name="apellidos" Type="nchar" MaxLength="100" />
+          <Property Name="dni" Type="nchar" MaxLength="100" />
+          <Property Name="fecha_nacimiento" Type="nchar" MaxLength="100" />
+          <Property Name="direccion_particular" Type="nchar" MaxLength="100" />
+          <Property Name="localidad" Type="nchar" MaxLength="100" />
+          <Property Name="provincia" Type="nchar" MaxLength="100" />
+          <Property Name="codigo_postal" Type="nchar" MaxLength="100" />
+          <Property Name="email" Type="nchar" MaxLength="100" />
+          <Property Name="telefono_movil" Type="nchar" MaxLength="100" />
+          <Property Name="telefono_fijo" Type="nchar" MaxLength="100" />
+          <Property Name="puesto_trabajo" Type="nchar" MaxLength="100" />
+          <Property Name="centro_trabajo" Type="nchar" MaxLength="100" />
+          <Property Name="direccion_trabajo" Type="nchar" MaxLength="100" />
+          <Property Name="localidad_trabajo" Type="nchar" MaxLength="100" />
+          <Property Name="provincia_trabajo" Type="nchar" MaxLength="100" />
+          <Property Name="codigo_postal_trabajo" Type="nchar" MaxLength="100" />
+          <Property Name="telefono_trabajo" Type="nchar" MaxLength="100" />
+          <Property Name="nombre1_aval" Type="nchar" MaxLength="100" />
+          <Property Name="email1_aval" Type="nchar" MaxLength="100" />
+          <Property Name="nombre2_aval" Type="nchar" MaxLength="100" />
+          <Property Name="email2_aval" Type="nchar" MaxLength="100" />
+          <Property Name="banco" Type="nchar" MaxLength="100" />
+          <Property Name="direccion_banco" Type="nchar" MaxLength="100" />
+          <Property Name="localidad_banco" Type="nchar" MaxLength="100" />
+          <Property Name="titular" Type="nchar" MaxLength="100" />
+          <Property Name="codigo_entidad" Type="nchar" MaxLength="100" />
+          <Property Name="codigo_sucursal" Type="nchar" MaxLength="100" />
+          <Property Name="codigo_control" Type="nchar" MaxLength="100" />
+          <Property Name="codigo_cuenta" Type="nchar" MaxLength="100" />
+          <Property Name="alta" Type="smalldatetime" />
+        </EntityType>
+        <EntityContainer Name="dbAlergomurciaModelStoreContainer">
+          <EntitySet Name="reuniones" EntityType="Self.reuniones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seccionespdf" EntityType="Self.seccionespdf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUploadedFiledetails" EntityType="Self.tblUploadedFiledetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User].[id] AS [id], 
+    [User].[nombre] AS [nombre], 
+    [User].[usuario] AS [usuario], 
+    [User].[password] AS [password], 
+    [User].[login] AS [login], 
+    [User].[articulos_insertar] AS [articulos_insertar], 
+    [User].[articulos_editar] AS [articulos_editar], 
+    [User].[articulos_eliminar] AS [articulos_eliminar], 
+    [User].[reuniones_insertar] AS [reuniones_insertar], 
+    [User].[reuniones_editar] AS [reuniones_editar], 
+    [User].[reuniones_eliminar] AS [reuniones_eliminar], 
+    [User].[noticias_insertar] AS [noticias_insertar], 
+    [User].[noticias_editar] AS [noticias_editar], 
+    [User].[noticias_eliminar] AS [noticias_eliminar], 
+    [User].[usuarios_activar] AS [usuarios_activar], 
+    [User].[usuarios_permisos] AS [usuarios_permisos], 
+    [User].[activo] AS [activo], 
+    [User].[subir_ficheros] AS [subir_ficheros], 
+    [User].[apellidos] AS [apellidos], 
+    [User].[dni] AS [dni], 
+    [User].[fecha_nacimiento] AS [fecha_nacimiento], 
+    [User].[direccion_particular] AS [direccion_particular], 
+    [User].[localidad] AS [localidad], 
+    [User].[provincia] AS [provincia], 
+    [User].[codigo_postal] AS [codigo_postal], 
+    [User].[email] AS [email], 
+    [User].[telefono_movil] AS [telefono_movil], 
+    [User].[telefono_fijo] AS [telefono_fijo], 
+    [User].[puesto_trabajo] AS [puesto_trabajo], 
+    [User].[centro_trabajo] AS [centro_trabajo], 
+    [User].[direccion_trabajo] AS [direccion_trabajo], 
+    [User].[localidad_trabajo] AS [localidad_trabajo], 
+    [User].[provincia_trabajo] AS [provincia_trabajo], 
+    [User].[codigo_postal_trabajo] AS [codigo_postal_trabajo], 
+    [User].[telefono_trabajo] AS [telefono_trabajo], 
+    [User].[nombre1_aval] AS [nombre1_aval], 
+    [User].[email1_aval] AS [email1_aval], 
+    [User].[nombre2_aval] AS [nombre2_aval], 
+    [User].[email2_aval] AS [email2_aval], 
+    [User].[banco] AS [banco], 
+    [User].[direccion_banco] AS [direccion_banco], 
+    [User].[localidad_banco] AS [localidad_banco], 
+    [User].[titular] AS [titular], 
+    [User].[codigo_entidad] AS [codigo_entidad], 
+    [User].[codigo_sucursal] AS [codigo_sucursal], 
+    [User].[codigo_control] AS [codigo_control], 
+    [User].[codigo_cuenta] AS [codigo_cuenta], 
+    [User].[alta] AS [alta]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbAlergomurciaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="reunione">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lugar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="resumen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="enlaces" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documento" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="seccionespdf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="seccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUploadedFiledetail">
+          <Key>
+            <PropertyRef Name="fileID" />
+          </Key>
+          <Property Name="fileID" Type="Int32" Nullable="false" />
+          <Property Name="filenameName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="filePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Createdby" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="0" />
+          <Property Name="Updatedby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDt" Type="DateTime" Precision="0" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="seccion" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="idCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="login" Type="DateTime" Precision="0" />
+          <Property Name="articulos_insertar" Type="Boolean" />
+          <Property Name="articulos_editar" Type="Boolean" />
+          <Property Name="articulos_eliminar" Type="Boolean" />
+          <Property Name="reuniones_insertar" Type="Boolean" />
+          <Property Name="reuniones_editar" Type="Boolean" />
+          <Property Name="reuniones_eliminar" Type="Boolean" />
+          <Property Name="noticias_insertar" Type="Boolean" />
+          <Property Name="noticias_editar" Type="Boolean" />
+          <Property Name="noticias_eliminar" Type="Boolean" />
+          <Property Name="usuarios_activar" Type="Boolean" />
+          <Property Name="usuarios_permisos" Type="Boolean" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="subir_ficheros" Type="Boolean" />
+          <Property Name="apellidos" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="dni" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="fecha_nacimiento" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="direccion_particular" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="localidad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="provincia" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_postal" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="telefono_movil" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="telefono_fijo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="puesto_trabajo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="centro_trabajo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="direccion_trabajo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="localidad_trabajo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="provincia_trabajo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_postal_trabajo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="telefono_trabajo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="nombre1_aval" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="email1_aval" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="nombre2_aval" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="email2_aval" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="banco" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="direccion_banco" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="localidad_banco" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="titular" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_entidad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_sucursal" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_control" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_cuenta" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="alta" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="dbAlergomurciaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="reuniones" EntityType="Self.reunione" />
+          <EntitySet Name="seccionespdfs" EntityType="Self.seccionespdf" />
+          <EntitySet Name="tblUploadedFiledetails" EntityType="Self.tblUploadedFiledetail" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbAlergomurciaModelStoreContainer" CdmEntityContainer="dbAlergomurciaEntities">
+          <EntitySetMapping Name="reuniones">
+            <EntityTypeMapping TypeName="dbAlergomurciaModel.reunione">
+              <MappingFragment StoreEntitySet="reuniones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="lugar" ColumnName="lugar" />
+                <ScalarProperty Name="resumen" ColumnName="resumen" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="enlaces" ColumnName="enlaces" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seccionespdfs">
+            <EntityTypeMapping TypeName="dbAlergomurciaModel.seccionespdf">
+              <MappingFragment StoreEntitySet="seccionespdf">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUploadedFiledetails">
+            <EntityTypeMapping TypeName="dbAlergomurciaModel.tblUploadedFiledetail">
+              <MappingFragment StoreEntitySet="tblUploadedFiledetails">
+                <ScalarProperty Name="fileID" ColumnName="fileID" />
+                <ScalarProperty Name="filenameName" ColumnName="filenameName" />
+                <ScalarProperty Name="filePath" ColumnName="filePath" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="UpdatedDt" ColumnName="UpdatedDt" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="dbAlergomurciaModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="articulos_insertar" ColumnName="articulos_insertar" />
+                <ScalarProperty Name="articulos_editar" ColumnName="articulos_editar" />
+                <ScalarProperty Name="articulos_eliminar" ColumnName="articulos_eliminar" />
+                <ScalarProperty Name="reuniones_insertar" ColumnName="reuniones_insertar" />
+                <ScalarProperty Name="reuniones_editar" ColumnName="reuniones_editar" />
+                <ScalarProperty Name="reuniones_eliminar" ColumnName="reuniones_eliminar" />
+                <ScalarProperty Name="noticias_insertar" ColumnName="noticias_insertar" />
+                <ScalarProperty Name="noticias_editar" ColumnName="noticias_editar" />
+                <ScalarProperty Name="noticias_eliminar" ColumnName="noticias_eliminar" />
+                <ScalarProperty Name="usuarios_activar" ColumnName="usuarios_activar" />
+                <ScalarProperty Name="usuarios_permisos" ColumnName="usuarios_permisos" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="subir_ficheros" ColumnName="subir_ficheros" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="direccion_particular" ColumnName="direccion_particular" />
+                <ScalarProperty Name="localidad" ColumnName="localidad" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefono_movil" ColumnName="telefono_movil" />
+                <ScalarProperty Name="telefono_fijo" ColumnName="telefono_fijo" />
+                <ScalarProperty Name="puesto_trabajo" ColumnName="puesto_trabajo" />
+                <ScalarProperty Name="centro_trabajo" ColumnName="centro_trabajo" />
+                <ScalarProperty Name="direccion_trabajo" ColumnName="direccion_trabajo" />
+                <ScalarProperty Name="localidad_trabajo" ColumnName="localidad_trabajo" />
+                <ScalarProperty Name="provincia_trabajo" ColumnName="provincia_trabajo" />
+                <ScalarProperty Name="codigo_postal_trabajo" ColumnName="codigo_postal_trabajo" />
+                <ScalarProperty Name="telefono_trabajo" ColumnName="telefono_trabajo" />
+                <ScalarProperty Name="nombre1_aval" ColumnName="nombre1_aval" />
+                <ScalarProperty Name="email1_aval" ColumnName="email1_aval" />
+                <ScalarProperty Name="nombre2_aval" ColumnName="nombre2_aval" />
+                <ScalarProperty Name="email2_aval" ColumnName="email2_aval" />
+                <ScalarProperty Name="banco" ColumnName="banco" />
+                <ScalarProperty Name="direccion_banco" ColumnName="direccion_banco" />
+                <ScalarProperty Name="localidad_banco" ColumnName="localidad_banco" />
+                <ScalarProperty Name="titular" ColumnName="titular" />
+                <ScalarProperty Name="codigo_entidad" ColumnName="codigo_entidad" />
+                <ScalarProperty Name="codigo_sucursal" ColumnName="codigo_sucursal" />
+                <ScalarProperty Name="codigo_control" ColumnName="codigo_control" />
+                <ScalarProperty Name="codigo_cuenta" ColumnName="codigo_cuenta" />
+                <ScalarProperty Name="alta" ColumnName="alta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

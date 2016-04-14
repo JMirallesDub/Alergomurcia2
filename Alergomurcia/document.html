@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="MyApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div data-ng-controller="reunionesController">
+        <table class="table table-striped">
+            <tr>
+                <td>Id</td>
+                <td>Fecha</td>
+                <td>Titulo</td>
+            </tr>
+            <tr dir-paginate="met in Meets |filter:mydate | itemsPerPage:10">
+                <td>{{met.id}}</td>
+                <td>{{met.fecha | jsDate | date:"dd/MM/yyyy"}}</td>
+                <td>{{met.titulo}}</td>
+            </tr>
+        </table>
+        <dir-pagination-controls max-size="10"
+                                 direction-links="true"
+                                 boundary-links="true">
+        </dir-pagination-controls>
+    </div>
+</body>
+</html>
+<script src="Scripts/angular.min.js"></script>
+<script src="Scripts/jquery-1.10.2.min.js"></script>
+<script src="app.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<script src="Scripts/dirPagination.js"></script>
