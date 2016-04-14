@@ -135,7 +135,7 @@
     <Content Include="document.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="meet.html" />
+    <Content Include="meet\meet.html" />
     <Content Include="Models\acaro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>acaro.edmx</DependentUpon>
@@ -235,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="constants\" />
     <Folder Include="Views\reuniones\" />
     <Folder Include="Views\seccionespdfs\" />
     <Folder Include="Views\tblUploadedFiledetails\" />
